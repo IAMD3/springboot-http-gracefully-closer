@@ -8,7 +8,7 @@
 
 ### springboot web应用优雅关闭组件
 
->整合该组件后, springboot web应用在收到应用关闭信号时(kill/kill -15 TERM信号) 会提前关闭web容器, 后续请求将会立刻返回HttpCode:503(服务不可用), 
+>整合该组件后, springboot web应用在收到应用关闭信号时(kill/kill -15 TERM信号) 会拦截后续请求, 后续请求将会立刻返回HttpCode:503(服务不可用), 
 >避免新请求申请已释放资源产生处理异常 (e.g 异常Singleton bean creation not allowed while singletons of this factory are in destruction )
 >
 >配合负载代理组件(e.g Nginx <b>proxy_next_upstream 模块</b>) http_503情况下 请求会平滑重路由到未关闭server, 做到滚动重启应用阶段用户请求无影响
